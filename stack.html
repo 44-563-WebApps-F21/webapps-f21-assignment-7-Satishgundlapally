@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Stack page assignment7</title>
+    <style>
+        .flex-container {
+            display: flex;
+            flex-direction: row;
+            background-color: #81e70d;
+        }
+
+        .flex-container>div {
+            /*div children of the flex container*/
+            background-color: #d30c0c;
+            margin: 10px;
+            padding: 20px;
+            font-size: 30px;
+        }
+
+        /* Responsive layout */
+        @media (max-width: 600px) {
+            .flex-container {
+                flex-direction: column;
+                background-color: turquoise;
+            }
+        }
+    </style>
+</head>
+
+<h3>satishreddy gundlapally builds a
+    stack</h3>
+
+<body>
+    <input type="text" id="name"><br><br><br>
+    <div class="flex-container " id="target">
+        <div class="stack">row item 1</div>
+        <div class="stack">row item 2</div>
+        <div class="stack">row item 3</div>
+    </div>
+
+    <p> Press the button to create an new element of type div and then add it to the container.
+    </p>
+    <button onclick="makeNewDiv()">Push value</button>
+    <button onclick="popItem()">Pop</button>
+    <button onclick="zap()">Zap Values</button>
+    <button onclick="uniqueHandler()">unique</button>
+   
+
+
+    <script>
+        function makeNewDiv() {
+           
+            let element = document.createElement("div")
+            element.innerHTML = document.getElementById("name").value
+            element.className = "stack"
+           
+            document.getElementById('target').appendChild(element)
+
+        }
+        function popItem() {
+                  S1 = document.getElementsByClassName("stack")
+            length = S1.length
+            if (S1 != undefined && length > 0) {
+                S1[length - 1].remove()
+            }
+        }
+        function zap() {
+            S2 = document.getElementsByClassName("stack")
+            element = document.getElementById("name").value
+            if (S2 != undefined && S2.length > 0) {
+                for (let i = 0; i < S2.length; i++) {
+                    e = S2[i].innerHTML
+                    if (e == element) {
+                        console.log(e)
+                        S2[i].remove()
+                        i--
+                    }
+                }
+
+            }
+        }
+        function uniqueHandler() {
+        let stack_values = document.getElementsByClassName('stack');
+        for (let i = 0; i < stack_values.length; i++) {
+            e1 = stack_values[i].innerHTML;
+            for (let j = i + 1; j < stack_values.length; j++) {
+                e2= stack_values[j].innerHTML;
+                if (e1 == e2) {
+                    stack_values[j].remove();
+                    j--;
+                    i--;
+                }
+            }
+
+        }
+    }
+        
+    </script>
+</body>
+
+</html>
